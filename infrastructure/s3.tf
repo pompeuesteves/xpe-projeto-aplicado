@@ -16,11 +16,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "this" {
   }
 }
 
-resource "aws_s3_bucket_acl" "this" {
-  count  = length(var.bucket_names)
-  bucket = aws_s3_bucket.buckets[count.index].id
-  acl    = "private"
-}
 
 resource "aws_s3_bucket_public_access_block" "this" {
   count  = length(var.bucket_names)
