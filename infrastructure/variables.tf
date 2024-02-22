@@ -33,6 +33,10 @@ variable "script_glue_bucket" {
   default = "xpe-script-713051429766-tf"
 }
 
+variable "data_glue_bucket" {
+  default = "xpe-data-713051429766-tf"
+}
+
 variable "iam_role" {
   default = "arn:aws:iam::713051429766:role/AWSGlueServiceRole-IGTI-tf"
 }
