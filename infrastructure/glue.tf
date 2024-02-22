@@ -28,6 +28,10 @@ resource "aws_glue_job" "current_weather_extract" {
     "--TempDir"                          = "s3://${var.prefix}-script-${var.account}-tf/temporary/"
     "--enable-glue-datacatalog"          = ""
     "--class"                            = "GlueApp"
+    "--api_key"                          = "fee18c66937a024decff4075740077e4"
+    "--api_url"                          = "https://api.openweathermap.org/data/2.5/weather"
+    "--bucket"                           = var.data_glue_bucket
+    "--key"                              = "raw-zone/openweathermap"
   }
 }
 
@@ -62,6 +66,8 @@ resource "aws_glue_job" "current_weather_transform" {
     "--TempDir"                          = "s3://${var.prefix}-script-${var.account}-tf/temporary/"
     "--enable-glue-datacatalog"          = ""
     "--class"                            = "GlueApp"
+    "--bucket"                           = var.data_glue_bucket
+    "--key"                              = "refined-zone/openweathermap"
   }
 }
 
