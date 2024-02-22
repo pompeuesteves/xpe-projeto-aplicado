@@ -37,10 +37,6 @@ variable "data_glue_bucket" {
   default = "xpe-data-713051429766-tf"
 }
 
-variable "iam_role" {
-  default = "arn:aws:iam::713051429766:role/AWSGlueServiceRole-IGTI-tf"
-}
-
 variable "rawzone_database" {
   default = "xpe-rawzone"
 }
@@ -58,9 +54,13 @@ variable "glue_weather_transform" {
 }
 
 variable "name_role_glue" {
-  default = "AWSGlueServiceRole-xpe-tf"
+  default = "AWSGlueServiceRole-IGTI-tf"
 }
 
 variable "name_policy_glue" {
-  default = "AWSGluePolicy-xpe-tf"
+  default = "AWSGluePolicy-DatalakeIGTI-tf"
+}
+
+variable "iam_role" {
+  default = "arn:aws:iam::713051429766:role/AWSGlueServiceRole-IGTI-tf"
 }
