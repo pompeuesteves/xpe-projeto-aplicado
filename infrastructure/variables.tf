@@ -64,3 +64,9 @@ variable "name_policy_glue" {
 variable "iam_role" {
   default = "arn:aws:iam::713051429766:role/AWSGlueServiceRole-IGTI-tf"
 }
+
+variable "api_key" {
+  description = "chave da api"
+  type = string
+  sensitive = true
+}
