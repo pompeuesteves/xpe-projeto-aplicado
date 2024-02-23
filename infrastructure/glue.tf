@@ -84,3 +84,27 @@ resource "aws_glue_catalog_database" "refinedzone" {
   description = "base de dados da camada refined"
   tags        = var.tags
 }
+
+
+resource "aws_glue_trigger" "extract" {
+  name     = var.glue_weather_extract
+  schedule = "cron(0 0/1 * * ? *)"
+  type     = "SCHEDULED"
+
+  actions {
+    job_name = aws_glue_job.current_weather_extract.name
+  }
+  enabled = false
+}
+
+
+resource "aws_glue_trigger" "transform" {
+  name     = var.glue_weather_transform
+  schedule = "cron(0 11 * * ? *)"
+  type     = "SCHEDULED"
+
+  actions {
+    job_name = aws_glue_job.current_weather_transform.name
+  }
+  enabled = false
+}
