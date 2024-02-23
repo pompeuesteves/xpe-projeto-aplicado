@@ -32,6 +32,7 @@ jobs:
         COMMAND_IAC: terraform
       run: |
         cd infrastructure
+        export TF_VAR_api_key=${{ secrets.API_KEY }}
         $COMMAND_IAC init
         $COMMAND_IAC validate
         $COMMAND_IAC plan
