@@ -29,27 +29,3 @@ resource "aws_iam_role_policy_attachment" "glue_attach_AWSGlueConsoleFullAccess"
   role       = aws_iam_role.glue.name
   policy_arn = "arn:aws:iam::aws:policy/AWSGlueConsoleFullAccess"
 }
-
-resource "aws_iam_role" "glue_from_import" {
-  name = "AWSGlueServiceRole-testeigti-tf"
-  tags = var.tags
-  assume_role_policy = jsonencode(
-    {
-      Statement = [
-        {
-          Action = "sts:AssumeRole"
-          Effect = "Allow"
-          Principal = {
-            Service = "glue.amazonaws.com"
-          }
-        },
-      ]
-      Version = "2012-10-17"
-    }
-  )
-}
-
-resource "aws_iam_role_policy_attachment" "glue_attach_teste" {
-  role       = aws_iam_role.glue_from_import.name
-  policy_arn = aws_iam_policy.glue.arn
-}
